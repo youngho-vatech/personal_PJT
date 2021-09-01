@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { ADD_TASK } from "./Query";
-const AddTask = () => {
+const AddTask = ({ refetch }) => {
   let input;
   let completed;
   const [addTasks, { data }] = useMutation(ADD_TASK);
@@ -21,6 +21,7 @@ const AddTask = () => {
           });
           input.value = "";
           completed.checked = false;
+          refetch();
         }}
       >
         <input
